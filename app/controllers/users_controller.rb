@@ -8,14 +8,14 @@ class UsersController < ApplicationController
     @user = User.new(username: params[:username], password: params[:password])
     if @user.save
       session[:id] = @user.id
-      redirect '/users/show'
+      redirect '/users/:id'
     else
       erb :'/users/signup'
     end
   end
 
-  get '/users/show' do
-    @user = User.find_by_id(session[:id])
+  get '/users/:id' do
+    @user = current_user
     erb :'/users/show'
   end
 end

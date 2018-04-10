@@ -3,8 +3,7 @@ class User  < ActiveRecord::Base
   has_many :booknotes
   has_many :books, through: :booknotes
 
-  validates :username, presence: true
-    # { message: "Mmh, looks like you missed something here."}
+  validates :username, presence: { message: "Mmh, looks like you missed something here."}
   validates :username, uniqueness: true
   # { message: "Aw, that one's gone. Try another."}
   validates :password, presence: true
