@@ -4,5 +4,6 @@ class Books < ActiveRecord::Migration
       t.string :title
       t.string :author
       t.string :category
+    end
   end
 end

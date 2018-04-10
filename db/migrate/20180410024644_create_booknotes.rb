@@ -7,5 +7,6 @@ class CreateBooknotes < ActiveRecord::Migration
       t.string :follow_up
       t.integer :user_id
       t.integer :book_id
+    end
   end
 end
