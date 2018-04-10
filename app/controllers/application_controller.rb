@@ -8,6 +8,18 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
-    erb :index
+    if logged_in?
+      erb :'users/show'
+    else
+      erb :index
+    end
+  end
+
+  def logged_in?
+    !!session[:id]
+  end
+
+  def current_user
+    User.find(session[:id])
   end
 end
