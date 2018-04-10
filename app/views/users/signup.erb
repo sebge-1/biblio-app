@@ -3,12 +3,18 @@
 <form action="/signup" method="post">
     Your username:
       <input type="text" name="username" id="username">
+    <% if @user %>
+      <% if !@user.valid? %>
+          <%= @user.errors.messages[:username].join("") %>
+        <% end %>
+    <% end %><br>
     Your unguessable password:
       <input type="text" name="password" id="password">
+    <% if @user %>
+      <% if !@user.valid? %>
+        <%= @user.errors.messages[:password] %>
+      <% end %>
+    <% end %>
+
     <input type="submit" value="Sign Up" id="submit">
 </form>
-<% if !@user.valid? %>
-  <% @user.errors.messages.each do |error| %>
-    <h4><%= error %></h4>
-  <% end %>
-<% end %>
