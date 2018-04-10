@@ -7,8 +7,8 @@
       <input type="text" name="password" id="password">
     <input type="submit" value="Sign Up" id="submit">
 </form>
-<% if !current_user.valid? %>
-  <% current_user.errors.messages.each do |error| %>
+<% if !@user.valid? %>
+  <% @user.errors.messages.each do |error| %>
     <h4><%= error %></h4>
   <% end %>
-<% end %> 
+<% end %>

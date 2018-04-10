@@ -14,8 +14,16 @@ class UsersController < ApplicationController
     end
   end
 
+  get '/logout' do
+    if logged_in?
+      session.clear
+    end
+    redirect '/'
+  end
+
   get '/users/:id' do
     @user = current_user
     erb :'/users/show'
   end
+
 end
