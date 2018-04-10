@@ -5,6 +5,7 @@ gem 'sinatra-activerecord'
 gem 'thin'
 gem 'require_all'
 gem 'bcrypt'
+gem "password_strength"
 
 group :development do
   gem 'shotgun'
