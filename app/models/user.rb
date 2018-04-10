@@ -1,8 +1,7 @@
-class User
+class User  < ActiveRecord::Base
 
   has_many :booknotes
   has_many :book, through: :booknotes
-  
-  # has_secure_password **make sure you have right gem**
 
+  has_secure_password
 end
