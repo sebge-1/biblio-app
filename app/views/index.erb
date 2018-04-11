@@ -6,17 +6,10 @@
     Username:
       <input type="text" name="username" id="username">
 
-      <% if @user && !@user.errors.messages[:username].nil? %>
-        <%= @user.errors.messages[:username].join("") %>
-      <% end %><br>
     Password:
       <input type="text" name="password" id="password">
-      
-      <% if @user && !@user.errors.messages[:password].nil? %>
-          <% @user.errors.messages[:password].each do |password_error| %>
-            <%= password_error %>
-        <% end %>
-      <% end %><br>
+
+    <%= @error_message %>
     <input type="submit" value="Log In" id="submit">
 </form>
 
