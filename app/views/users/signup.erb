@@ -1,16 +1,17 @@
-<h1>Come and join Biblio!:</h1>
+<h1>Come and join Biblio!</h1>
 
 <form action="/signup" method="post">
     Your username:
       <input type="text" name="username" id="username">
 
-    <% if @user && !@user.errors.messages[:username].nil? %>
-      <%= @user.errors.messages[:username].join("") %>
-    <% end %><br>
+      <% if @user && !@user.errors.messages[:username].nil? %>
+        <%= @user.errors.messages[:username].join("") %>
+      <% end %><br>
+
     Your unguessable password:
       <input type="text" name="password" id="password">
 
-    <% if @user && !@user.errors.messages[:password].nil? %>
+      <% if @user && !@user.errors.messages[:password].nil? %>
         <% @user.errors.messages[:password].each do |password_error| %>
           <%= password_error %>
       <% end %>

@@ -24,5 +24,16 @@ class ApplicationController < Sinatra::Base
     def current_user
       User.find_by(id: session[:id])
     end
+
+    def set_error_message
+      if params[:username].blank? && params[:password].blank?
+        @error_message = "Please enter something."
+      elsif @user.nil?
+        @error_message = "We don't seem to know about you."
+      elsif !@user.authenticate(params[:password])
+        @error_message = "Wrong password. Try again."
+      end
+    end
+
   end
 end

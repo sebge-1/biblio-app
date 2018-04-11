@@ -27,13 +27,7 @@ class UsersController < ApplicationController
       session[:id] = @user.id
       redirect '/users/:id'
     else
-      if params[:username].blank? && params[:password].blank?
-        @error_message = "Please enter something."
-      elsif @user.nil?
-        @error_message = "We don't seem to know about you."
-      elsif !@user.authenticate(params[:password])
-        @error_message = "Wrong password. Try again."
-      end
+      set_error_message
       erb :index
     end
   end
