@@ -4,11 +4,8 @@ class User  < ActiveRecord::Base
   has_many :books, through: :booknotes
 
   validates :username, presence: { message: "Mmh, looks like you missed something here."}
-  validates :username, uniqueness: true
-  # { message: "Aw, that one's gone. Try another."}
-  validates :password, presence: true
-  # { message: "Better fill that in."}
-  validates_strength_of :password
-  # { message: "Mix some numbers and letters together."}
+  validates_uniqueness_of :username, { message: "Aw, that username's gone. Try another."}
   has_secure_password
+  validates_strength_of :password, unless: Proc.new { |a| a.password.blank? } 
+
 end
