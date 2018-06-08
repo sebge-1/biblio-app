@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     @user = User.new(username: params[:username], password: params[:password])
     if @user.save
       session[:id] = @user.id
-      redirect '/users/:id'
+      redirect "/users/#{@user.id}"
     else
       erb :'/users/signup'
     end
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     @user = User.find_by(username: params[:username])
     if @user && @user.authenticate(params[:password])
       session[:id] = @user.id
-      redirect '/users/:id'
+      redirect "/users/#{@user.id}"
     else
       set_error_message
       erb :index
@@ -37,5 +37,4 @@ class UsersController < ApplicationController
     erb :'/users/show'
   end
 
-  end
 end
