@@ -1,11 +1,15 @@
 <h2>Hello there, <%= @user.username %>!</h2>
 
-<% if @user.books.empty? %>
-  <h4> Start by adding <a href="/books/new">your first book</a> to the shelf</h4>
-<% else %>
-  <% @user.books.each do |book| %>
-    <p><%= book.title %></p>
-    <p><%= book.author %></p>
-  <% end %>
+ <% if @user.books.empty? %>
+   <h4> Start by adding <a href="/books/new">your first book</a> to the shelf</h4>
+ <% else %>
+   <ul><% @user.books.each do |book| %>
+      <li>
+        <%= book.title %><br>
+        <%= book.author %><br>
+      </li>  
+     <% end %>
+  </ul>
+  <p>Add another book <a href="/books/new">here</a></p>
 <% end %>
 <h4><a href="/logout">Log out</a></h4>
