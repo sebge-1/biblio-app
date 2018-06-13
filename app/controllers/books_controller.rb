@@ -9,10 +9,15 @@ class BooksController < ApplicationController
     if !params[:title].empty? && !params[:author].empty? #don't allow empty zombie books
       @book = Book.new(title: params[:title], author: params[:author])
       @user.books << @book
-      redirect "/users/#{@user.id}"
+      redirect "/books/#{@book.id}"
     else
       redirect '/books/new'
     end
+  end
+
+  get '/books/:id' do
+    @book = current_user.books.last
+    erb :'books/show'
   end
 
 end
