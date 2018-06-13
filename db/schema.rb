@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(version: 20180410025514) do
 
   create_table "booknotes", force: :cascade do |t|
-    t.string  "title"
+    t.string  "summary"
     t.string  "main_premise"
     t.string  "quotes"
     t.string  "follow_up"

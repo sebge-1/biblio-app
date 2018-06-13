@@ -1,7 +1,7 @@
 class CreateBooknotes < ActiveRecord::Migration
   def change
     create_table :booknotes do |t|
-      t.string :title
+      t.string :summary
       t.string :main_premise
       t.string :quotes
       t.string :follow_up
