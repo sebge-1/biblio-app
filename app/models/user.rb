@@ -1,7 +1,8 @@
 class User  < ActiveRecord::Base
 
-  has_many :booknotes
-  has_many :books, through: :booknotes
+  has_many :book_users
+  has_many :books, through: :book_users
+  has_many :booknotes, through: :books
 
   validates :username, presence: { message: "Mmh, looks like you missed something here."}
   validates_uniqueness_of :username, { message: "Aw, that username's gone. Try another."}

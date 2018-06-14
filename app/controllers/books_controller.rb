@@ -17,6 +17,7 @@ class BooksController < ApplicationController
 
   get '/books/:id' do
     @book = Book.find_by_id(params[:id])
+    @booknote = Booknote.find_by(book_id: @book.id)
     erb :'books/show'
   end
 

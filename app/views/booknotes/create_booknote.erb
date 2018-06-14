@@ -1,0 +1,15 @@
+<form method="POST" action="/books/<%= @book.id %>/booknotes">
+  <h4>One-line summary:
+    <input type="text" name="summary" id="summary" value="optional">
+  </h4>
+  <h4>Main premise:
+    <input type="text" name="main_premise" id="main_premise">
+  </h4>
+  <h4>Favorite quotes:
+    <input type="text" name="quotes" id="quotes">
+  </h4>
+  <h4>Follow-up:
+    <input type="text" name="follow_up" id="follow_up">
+  </h4>
+  <h4><input type="submit" id="submit"></h4>
+</form>

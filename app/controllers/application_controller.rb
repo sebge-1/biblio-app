@@ -10,7 +10,7 @@ class ApplicationController < Sinatra::Base
 
   get '/' do
     if logged_in?
-      redirect '/users/:id'
+      redirect '/users/#{current_user.id}'
     else
       erb :index
     end
@@ -34,5 +34,6 @@ class ApplicationController < Sinatra::Base
         @error_message = "Wrong password. Try again."
       end
     end
+  end
 
 end
