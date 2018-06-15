@@ -5,9 +5,9 @@
  <% else %>
    <ul><% @user.books.each do |book| %>
       <li>
-        <%= book.title %><br>
-        <%= book.author %><br>
-      </li>  
+        Title: <%= book.title %><br>
+        Author: <%= book.author %><br>
+      </li>
      <% end %>
   </ul>
   <p>Add another book <a href="/books/new">here</a></p>

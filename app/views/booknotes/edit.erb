@@ -1,0 +1,8 @@
+<form method="POST" action="/booknotes/<%= @booknote.id %>">
+   <input id="hidden" type="hidden" name="_method" value="patch">
+  <h4>Edit your booknote here:
+    <h4>Summary: <input type="text" name="summary" id="summary" value="<%= @booknote.summary %>"</h4>
+    <h4>Main Premise: <input type="text" name="main_premise" id="main_premise" value="<%= @booknote.main_premise %>"</h4>
+  </h4>
+  <input type="submit" id="submit">
+</form>
