@@ -19,7 +19,7 @@ class BooksController < ApplicationController
     @book = Book.find_by_id(params[:id])
     @booknote = Booknote.find_by(book_id: @book.id)
     if current_user.booknotes.include?(@booknote)
-      redirect '/booknotes/#{@booknote.id}'
+      redirect "/booknotes/#{@booknote.id}"
     else
       erb :'books/show'
     end

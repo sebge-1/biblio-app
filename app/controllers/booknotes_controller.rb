@@ -31,4 +31,9 @@ class BooknotesController < ApplicationController
     redirect "/booknotes/#{@booknote.id}"
   end
 
+  delete '/booknotes/:id/delete' do
+    @booknote = Booknote.find_by(id: params[:id])
+    @booknote.delete
+    redirect "users/#{current_user.id}"
+  end
 end
