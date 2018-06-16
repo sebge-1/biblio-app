@@ -3,6 +3,7 @@
  <% if @user.books.empty? %>
    <h4> Start by adding <a href="/books/new">your first book</a> to the shelf</h4>
  <% else %>
+   <h4>Your bookshelf:</h4>
    <ul><% @user.books.each do |book| %>
       <li>
         <a href="/books/<%= book.id %>">Title: <%= book.title %></a><br>
