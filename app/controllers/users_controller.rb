@@ -34,7 +34,9 @@ class UsersController < ApplicationController
 
   get '/users/:id' do
     @user = current_user
-    erb :'/users/show'
+    if logged_in?
+      erb :'/users/show'
+    end
   end
 
 end

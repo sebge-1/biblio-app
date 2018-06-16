@@ -21,19 +21,32 @@ class BooknotesController < ApplicationController
   end
 
   get '/booknotes/:id/edit' do
-    @booknote = Booknote.find_by(id: params[:id])
-    erb :'/booknotes/edit'
+      if logged_in? && current_user.booknotes.include?(@booknote)
+        @booknote = Booknote.find_by(id: params[:id])
+        erb :'/booknotes/edit'
+      else
+        redirect '/'
+      end
   end
 
   patch '/booknotes/:id' do
-    @booknote = Booknote.find_by(id: params[:id])
-    @booknote.update(summary: params[:summary], main_premise: params[:main_premise])
-    redirect "/booknotes/#{@booknote.id}"
+    if logged_in? && current_user.booknotes.include?(@booknote)
+      @booknote = Booknote.find_by(id: params[:id])
+      @booknote.update(summary: params[:summary], main_premise: params[:main_premise])
+      redirect "/booknotes/#{@booknote.id}"
+    else
+      redirect '/'
+    end
   end
 
   delete '/booknotes/:id/delete' do
     @booknote = Booknote.find_by(id: params[:id])
-    @booknote.delete
-    redirect "users/#{current_user.id}"
+    if logged_in? && current_user.booknotes.include?(@booknote)
+      @booknote.delete
+      redirect "/users/#{current_user.id}"
+    else
+      redirect '/'
+    end
   end
+
 end

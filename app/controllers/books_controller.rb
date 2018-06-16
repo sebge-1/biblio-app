@@ -1,17 +1,34 @@
 class BooksController < ApplicationController
 
+  get '/books' do
+    if logged_in?
+      @books = Book.all
+      erb :'/books/index'
+    else
+      '/'
+    end
+  end
+
   get '/books/new' do
-    erb :'/books/new'
+    if logged_in?
+      erb :'/books/new'
+    else
+      '/'
+    end
   end
 
   post '/books' do
     @user = current_user
-    if !params[:title].empty? && !params[:author].empty? #don't allow empty zombie books
-      @book = Book.create(title: params[:title], author: params[:author])
-      @user.books << @book
-      redirect "/books/#{@book.id}"
+    if logged_in?
+      if !params[:title].empty? && !params[:author].empty? #don't allow empty zombie books
+        @book = Book.create(title: params[:title], author: params[:author])
+        @user.books << @book
+        redirect "/books/#{@book.id}"
+      else
+        redirect '/books/new'
+      end
     else
-      redirect '/books/new'
+      '/'
     end
   end
 
@@ -22,6 +39,33 @@ class BooksController < ApplicationController
       redirect "/booknotes/#{@booknote.id}"
     else
       erb :'books/show'
+    end
+  end
+
+  get '/books/:id/edit' do
+    @book = Book.find_by(id: params[:id])
+    if logged_in? && current_user.books.include?(@book)
+      erb :'/books/edit'
+    else
+      '/'
+    end
+  end
+
+  patch '/books/:id' do
+    if logged_in? && current_user.books.include?(@book)
+      @book = Book.find_by(id: params[:id])
+      @book.update(title: params[:title], author: [params[:author]])
+    else
+      '/'
+    end
+  end
+
+  delete '/books/:id/delete' do
+    if logged_in? && current_user.books.include?(@book)
+      @book = Book.find_by(id: params[:id])
+      @book.delete
+    else
+      '/'
     end
   end
 
