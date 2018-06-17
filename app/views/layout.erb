@@ -8,24 +8,31 @@
     <title>Biblio</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro-all.min.css">
   </head>
   <body>
     <nav class="navbar navbar-inverse">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" href="/">Biblio</a>
+        <a class="navbar-brand" href="/">Home</a>
       </div>
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Page 1</a></li>
-        <li><a href="#">Page 2</a></li>
-        <li><a href="#">Page 3</a></li>
+        <li class="active"><a href="/">Add a book</a></li>
+        <li><a href="/books">Discover new books</a></li>
+        <li><a href="/authors">Browse authors</a></li>
+        <li><a href="/logout">Logout</a></li>
       </ul>
     </div>
   </nav>
 
       <%= yield %>
+
+
+      <footer class="container-fluid navbar-inverse text-center">
+        <button class="btn btn-sx" type="button"><a href="https://github.com/scirocco21/biblio-app">Github repository</a></button>
+      </footer>
 
       <!-- Optional JavaScript -->
       <!-- jQuery first, then Popper.js, then Bootstrap JS -->

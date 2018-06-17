@@ -1,16 +1,22 @@
-<h2>Hello there, <%= @user.username %>!</h2>
+<div class="text-center"><h2>Hello there, <%= @user.username %>!</h2></div>
 
  <% if @user.books.empty? %>
-   <h4> Start by adding <a href="/books/new">your first book</a> to the shelf</h4>
+   <div class="text-center"><h4> Start by adding <a href="/books/new">your first book</a> to the shelf</h4></div>
  <% else %>
-   <h4>Your bookshelf:</h4>
-   <ul><% @user.books.each do |book| %>
-      <li>
-        <a href="/books/<%= book.id %>">Title: <%= book.title %></a><br>
-        Author: <%= book.author %><br>
-      </li>
-     <% end %>
-  </ul>
-  <p>Add another book <a href="/books/new">here</a></p>
+    <div class="text-center"><h4>Your bookshelf:</h4></div>
+      <div class="row">
+        <% @user.books.each do |book| %>
+          <div class="col-sm-6">
+            <div class="card">
+              <a href="/books/<%= book.id %>">
+                  <div class="card-header text-center">Author: <%= book.author %></div>
+                  <div class="card-body text-center">
+                  Title: <%= book.title %></div>
+                  <div class="card-footer"></div>
+              </a>
+            </div>
+          </div>
+        <% end %>
+      </div>
+  <div class="text-center"><p>Add another book <a href="/books/new">here</a></p></div>
 <% end %>
-<h4><a href="/logout">Log out</a></h4>

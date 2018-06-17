@@ -21,12 +21,12 @@ class BooknotesController < ApplicationController
   end
 
   get '/booknotes/:id/edit' do
-      if logged_in? && current_user.booknotes.include?(@booknote)
-        @booknote = Booknote.find_by(id: params[:id])
-        erb :'/booknotes/edit'
-      else
-        redirect '/'
-      end
+    @booknote = Booknote.find_by(id: params[:id])
+    if logged_in? && current_user.booknotes.include?(@booknote)
+      erb :'/booknotes/edit'
+    else
+      redirect '/'
+    end
   end
 
   patch '/booknotes/:id' do
