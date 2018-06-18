@@ -1,5 +1,5 @@
 <h4>Summary: <%= @booknote.summary %></h4>
-<h4>Main Premise: <%= @booknote.main_premise %></h4>
+<h4>Quotes: <%= @booknote.quotes %></h4>
 <p><a href="/booknotes/<%= @booknote.id %>/edit">Edit</a></p>
 
 <form method="post" action="/booknotes/<%=@booknote.id%>/delete">

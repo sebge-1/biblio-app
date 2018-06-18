@@ -2,7 +2,9 @@
    <input id="hidden" type="hidden" name="_method" value="patch">
   <h4>Edit your booknote here:
     <h4>Summary: <input type="text" name="summary" id="summary" value="<%= @booknote.summary %>"</h4>
-    <h4>Main Premise: <input type="text" name="main_premise" id="main_premise" value="<%= @booknote.main_premise %>"</h4>
+    <h4>Quotes: <input type="text" name="quotes" id="quotes" value="<%= @booknote.quotes %>"</h4>
+    <h4>Follow-up for future research: <input type="text" name="research" id="research" value="<%= @booknote.research %>"</h4>
+
   </h4>
   <input type="submit" id="submit">
 </form>

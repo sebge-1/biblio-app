@@ -11,7 +11,7 @@ class BooknotesController < ApplicationController
 
   post '/books/:id/booknotes' do
     @book = Book.find_by_id(params[:id])
-    @booknote = Booknote.create(summary: params[:summary], main_premise: params[:main_premise], book_id: @book.id)
+    @booknote = Booknote.create(summary: params[:summary], quotes: params[:quotes], book_id: @book.id)
     @book.booknotes << @booknote
     redirect "/booknotes/#{@booknote.id}"
   end
@@ -33,7 +33,7 @@ class BooknotesController < ApplicationController
   patch '/booknotes/:id' do
     if logged_in? && current_user.booknotes.include?(@booknote)
       @booknote = Booknote.find_by(id: params[:id])
-      @booknote.update(summary: params[:summary], main_premise: params[:main_premise])
+      @booknote.update(summary: params[:summary], quotes: params[:quotes], research: params[:research])
       redirect "/booknotes/#{@booknote.id}"
     else
       redirect '/'

@@ -20,8 +20,9 @@ class BooksController < ApplicationController
   post '/books' do
     @user = current_user
     if logged_in?
-      if !params[:title].empty? && !params[:author].empty? #don't allow empty zombie books
-        @book = Book.create(title: params[:title], author: params[:author])
+      if !params[:title].empty? && !params[:author_name].empty? #don't allow empty zombie books
+        @author = Author.create(name: params[author_name])
+        @book = Book.create(title: params[:title], author_id: @author.id)
         @user.books << @book
         redirect "/books/#{@book.id}"
       else
@@ -53,8 +54,10 @@ class BooksController < ApplicationController
 
   patch '/books/:id' do
     @book = Book.find_by(id: params[:id])
+    @author = Author.find_by(name: @book.author.name)
     if logged_in? && current_user.books.include?(@book)
-      @book.update(title: params[:title], author: params[:author])
+      @book.update(title: params[:title])
+      @author.update(name: params[:author_name])
     end
     redirect '/'
   end
@@ -69,7 +72,7 @@ class BooksController < ApplicationController
 
   get '/books/:id/add' do
     @book = Book.find_by(id: params[:id])
-    @copy = Book.create(title: @book.title, author: @book.author)
+    @copy = Book.create(title: @book.title, author_name: @book.author.name)
     current_user.books << @copy
     redirect '/'
   end

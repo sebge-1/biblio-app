@@ -1,15 +1,14 @@
 <form method="POST" action="/books/<%= @book.id %>/booknotes">
-  <h4>One-line summary:
-    <input type="text" name="summary" id="summary" value="optional">
+  <h4>Summary:
+    <textarea rows="4" cols="50" name="summary" id="summary" value="Don Quixote is a middle-aged gentleman from the region of La Mancha in central Spain. Obsessed with the chivalrous ideals touted in books he has read, he decides to take up his lance and sword to defend the helpless and destroy the wicked.">
+>
+   </textarea>
   </h4>
-  <h4>Main premise:
-    <input type="text" name="main_premise" id="main_premise">
-  </h4>
-  <h4>Favorite quotes:
+  <h4>Quotes:
     <input type="text" name="quotes" id="quotes">
   </h4>
-  <h4>Follow-up:
-    <input type="text" name="follow_up" id="follow_up">
+  <h4>Follow-up for future research:
+    <input type="text" name="research" id="research">
   </h4>
   <h4><input type="submit" id="submit"></h4>
 </form>
