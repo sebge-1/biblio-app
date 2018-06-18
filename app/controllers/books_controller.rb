@@ -5,7 +5,7 @@ class BooksController < ApplicationController
       @books = Book.all
       erb :'/books/index'
     else
-      '/'
+      redirect '/'
     end
   end
 
@@ -13,7 +13,7 @@ class BooksController < ApplicationController
     if logged_in?
       erb :'/books/new'
     else
-      '/'
+      redirect '/'
     end
   end
 
@@ -28,7 +28,7 @@ class BooksController < ApplicationController
         redirect '/books/new'
       end
     else
-      '/'
+      redirect '/'
     end
   end
 
@@ -47,7 +47,7 @@ class BooksController < ApplicationController
     if logged_in? && current_user.books.include?(@book)
       erb :'/books/edit'
     else
-      '/'
+      redirect '/'
     end
   end
 
