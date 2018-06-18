@@ -19,16 +19,17 @@
               <!-- footer -->
               <div class="card-footer">
                 <div class="text-center">
-                  <button class="btn btn-ghost btn-ghost-bordered "><a href="/books/<%= book.id %>/edit">Edit this title</a></button>
+                  <a href="/books/<%= book.id %>/edit" class="btn btn-sm btn-dark">Edit this title</a>
                 </div>
 
-                <% if @user.booknotes.detect{|booknote| booknote.book_id === book.id} %>
+                <% @booknote = @user.booknotes.detect{|booknote| booknote.book_id === book.id} %>
+                <% if @booknote %>
                   <div class="text-center">
-                    <button class="btn btn-ghost btn-ghost-bordered center-block"><a href="/books/<%= book.id %>">View your booknote</a></button>
+                    <a href="/booknotes/<%= @booknote.id %>" class="btn btn-sm btn-dark">View your booknote</a>
                   </div>
                   <% else %>
                     <div class="text-center">
-                      <button class="btn btn-bordered center-block"><a href="/books/<%= book.id %>">Add a booknote</a></button>
+                      <a href="/books/<%= book.id %>/booknotes/new" class="btn btn-sm btn-dark">Add a booknote</a>
                     </div>
                   <% end %>
 

@@ -69,7 +69,8 @@ class BooksController < ApplicationController
 
   get '/books/:id/add' do
     @book = Book.find_by(id: params[:id])
-    current_user.books << @book
+    @copy = Book.create(title: @book.title, author: @book.author)
+    current_user.books << @copy
     redirect '/'
   end
 

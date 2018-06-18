@@ -1,12 +1,13 @@
 class BooknotesController < ApplicationController
 
-  # get '/create_booknote' do
-  #   if current_user.logged_in
-  #     erb :'/booknotes/create_booknote'
-  #   else
-  #     redirect '/login'
-  #   end
-  # end
+  get '/books/:id/booknotes/new' do
+    if logged_in?
+      @book = Book.find_by_id(params[:id])
+      erb :'/booknotes/new'
+    else
+      redirect '/'
+    end
+  end
 
   post '/books/:id/booknotes' do
     @book = Book.find_by_id(params[:id])

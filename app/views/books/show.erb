@@ -3,7 +3,7 @@
         <p class="lead"><em>By</em><br><%= @book.author %></p>
         <p class="lead">
           <a href="/books/<%= @book.id %>/edit" class="btn btn-lg btn-secondary">Edit this title</a>
-          <a href="/booknotes/create_booknote" class="btn btn-lg btn-secondary">Add a booknote</a>
+          <a href="/books/<%= @book.id %>/booknotes/new" class="btn btn-lg btn-secondary">Add a booknote</a>
         </p>
       </main>
 
