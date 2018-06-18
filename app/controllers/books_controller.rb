@@ -67,4 +67,10 @@ class BooksController < ApplicationController
     redirect '/'
   end
 
+  get '/books/:id/add' do
+    @book = Book.find_by(id: params[:id])
+    current_user.books << @book
+    redirect '/'
+  end
+
 end
