@@ -1,6 +1,25 @@
-<ul><% @books.each do |book| %>
-  <li><%= book.title %><br>
-    <%= book.author %>
-  </li>
+<div class="row">
+  <% @books.each do |book| %>
+    <div class="col-sm-6">
+      <!-- beginning of individual card -->
+      <div class="card">
+        <!-- header -->
+        <div class="card-header text-center">
+          <h4 class="class-title"><%= book.title %></h4>
+        </div>
+        <!-- body -->
+        <div class="card-body text-center">
+          <em>By</em><br> <%= book.author %>
+        </div>
+        <!-- footer -->
+        <div class="card-footer">
+          <div class="text-center">
+            <button class="btn btn-ghost btn-ghost-bordered "><a href="/books/<%= book.id %>/edit">Edit this title</a></button>
+          </div>
+        </div>
+        <!-- end of footer -->
+      </div>
+    <!-- end of card -->
+    </div>
   <% end %>
-</ul>
+</div>
