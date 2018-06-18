@@ -52,12 +52,11 @@ class BooksController < ApplicationController
   end
 
   patch '/books/:id' do
+    @book = Book.find_by(id: params[:id])
     if logged_in? && current_user.books.include?(@book)
-      @book = Book.find_by(id: params[:id])
-      @book.update(title: params[:title], author: [params[:author]])
-    else
-      '/'
+      @book.update(title: params[:title], author: params[:author])
     end
+    redirect '/'
   end
 
   delete '/books/:id/delete' do
