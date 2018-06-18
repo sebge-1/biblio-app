@@ -3,20 +3,45 @@
  <% if @user.books.empty? %>
    <div class="text-center"><h4> Start by adding <a href="/books/new">your first book</a> to the shelf</h4></div>
  <% else %>
-    <div class="text-center"><h4>Your bookshelf:</h4></div>
+    <h4 class="text-center">Your bookshelf:</h4>
       <div class="row">
         <% @user.books.each do |book| %>
           <div class="col-sm-6">
             <div class="card">
-              <a href="/books/<%= book.id %>">
-                  <div class="card-header text-center"><%= book.title %></div>
-                  <div class="card-body text-center">
-                  <em>By</em><br> <%= book.author %></div>
-                  <div class="card-footer"></div>
-              </a>
+              <!-- header -->
+              <div class="card-header text-center">
+                <h4 class="class-title"><%= book.title %></h2>
+              </div>
+              <!-- body -->
+              <div class="card-body text-center">
+                <em>By</em><br> <%= book.author %>
+              </div>
+              <!-- footer -->
+              <div class="card-footer">
+                <div class="text-center">
+                  <button class="btn btn-ghost btn-ghost-bordered "><a href="/books/<%= book.id %>/edit">Edit this title</a></button>
+                </div>
+
+                <% if @user.booknotes.detect{|booknote| booknote.book_id === book.id} %>
+                  <div class="text-center">
+                    <button class="btn btn-ghost btn-ghost-bordered center-block"><a href="/books/<%= book.id %>">View your booknote</a></button>
+                  </div>
+                  <% else %>
+                    <div class="text-center">
+                      <button class="btn btn-ghost btn-ghost-bordered center-block"><a href="/books/<%= book.id %>">Add a booknote</a></button>
+                    </div>
+                  <% end %>
+
+                  <!-- delete button -->
+                  <div>
+                    <form method="post" action="/books/<%=book.id%>/delete">
+                      <input id="hidden" type="hidden" name="_method" value="delete">
+                      <input type="image" src="https://png.icons8.com/metro/50/000000/trash.png" height="10" width="10">
+                    </form>
+                  </div>
+              </div>
             </div>
           </div>
         <% end %>
       </div>
-  <button type="button" class="btn btn-lg">Add another book <a href="/books/new">here</a></button>
-<% end %>
+    <% end %>
