@@ -10,8 +10,9 @@ Sinatra CRUD app for creating booknotes and organizing one's personal library.
 # Contributor Guidelines
 
 ## What do I need to know to help?
-If you are looking to help to with a code contribution our project uses Sinatra and a variety of Ruby gems.
+If you are looking to help to with a code contribution, our project uses Sinatra and a variety of Ruby gems.
 
+## What do I do?
 If you are interested in making a code contribution, find an issue that you are interested in addressing or a feature that you would like to add.
 Fork the repository associated with the issue to your local GitHub organization. This means that you will have a copy of the repository under your-GitHub-username/biblio.
 Clone the repository to your local machine using git clone https://github.com/github-username/repository-name.git.

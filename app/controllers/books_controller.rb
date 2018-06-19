@@ -27,13 +27,13 @@ class BooksController < ApplicationController
         @author.books << @book
         redirect "/books/#{@book.id}"
       else
-        if params[:title].blank? && params[:author].blank?
+        if params[:title].blank? && params[:author_name].blank?
           flash[:error] = 'Title and author cannot be blank'
         elsif params[:title].blank?
           flash[:error] = 'Title cannot be blank'
         else
           flash[:error] = "Author cannot be blank"
-        end   
+        end
         redirect '/books/new'
       end
     else
@@ -64,10 +64,22 @@ class BooksController < ApplicationController
     @book = Book.find_by(id: params[:id])
     @author = Author.find_by(name: @book.author.name)
     if logged_in? && current_user.books.include?(@book)
-      @book.update(title: params[:title])
-      @author.update(name: params[:author_name])
+      if !params[:title].blank? && !params[:author_name].blank?
+        @book.update(title: params[:title], author_name: params[:author_name])
+        @author.update(name: params[:author_name])
+        redirect "/books/#{@book.id}"
+      else
+        if params[:title].blank? && params[:author_name].blank?
+          flash[:error] = 'Title and author cannot be blank'
+        elsif params[:title].blank?
+          flash[:error] = 'Title cannot be blank'
+        else
+          flash[:error] = "Author cannot be blank"
+        end
+        redirect "/books/#{@book.id}/edit"
+      end
     end
-    redirect '/'
+
   end
 
   delete '/books/:id/delete' do
