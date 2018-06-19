@@ -1,5 +1,6 @@
 <h4>Summary: <%= @booknote.summary %></h4>
 <h4>Quotes: <%= @booknote.quotes %></h4>
+<h4>Research: <%= @booknote.research %></h4>
 <p><a href="/booknotes/<%= @booknote.id %>/edit">Edit</a></p>
 
 <form method="post" action="/booknotes/<%=@booknote.id%>/delete">

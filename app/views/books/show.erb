@@ -1,6 +1,6 @@
 <main role="main" class="inner cover text-center">
         <h1 class="cover-heading"><%= @book.title %> </h1>
-        <p class="lead"><em>By</em><br><%= @book.author %></p>
+        <p class="lead"><em>By</em><br><%= @book.author_name %></p>
         <p class="lead">
           <a href="/books/<%= @book.id %>/edit" class="btn btn-lg btn-secondary">Edit this title</a>
           <a href="/books/<%= @book.id %>/booknotes/new" class="btn btn-lg btn-secondary">Add a booknote</a>

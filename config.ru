@@ -5,3 +5,4 @@ use UsersController
 run ApplicationController
 use BooksController
 use BooknotesController
+use AuthorsController

@@ -4,10 +4,9 @@ class Booknote  < ActiveRecord::Base
   validate :not_all_empty?
 
   def not_all_empty?
-    def empty?
-    attributes.all? do |k, v|
-      ['summary', 'quotes', 'research'].include?(k) || v.nil? || v == [] || v == [""]
+    if summary.blank? && quotes.blank? && research.blank?
+      errors[:base] << "You must fill in at least one field"
     end
   end
-  end
+
 end

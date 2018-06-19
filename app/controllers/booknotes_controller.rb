@@ -12,8 +12,13 @@ class BooknotesController < ApplicationController
   post '/books/:id/booknotes' do
     @book = Book.find_by_id(params[:id])
     @booknote = Booknote.create(summary: params[:summary], quotes: params[:quotes], book_id: @book.id)
-    @book.booknotes << @booknote
-    redirect "/booknotes/#{@booknote.id}"
+    if @booknote.valid?
+      @book.booknotes << @booknote
+      redirect "/booknotes/#{@booknote.id}"
+    else
+      flash[:error] = @booknote.errors[:base][0]
+      redirect "/books/#{@book.id}/booknotes/new"
+    end
   end
 
   get '/booknotes/:id' do

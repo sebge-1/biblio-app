@@ -6,6 +6,8 @@ gem 'thin'
 gem 'require_all'
 gem 'bcrypt'
 gem "password_strength"
+gem 'rack-flash3'
+gem 'sinatra-flash'
 
 group :development do
   gem 'shotgun'

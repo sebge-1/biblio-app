@@ -5,5 +5,5 @@ class Book < ActiveRecord::Base
   belongs_to :author
 
   validates :title, presence: :true
-  validates :author, presence: :true
+  validates :author_name, presence: :true
 end
