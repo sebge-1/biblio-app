@@ -63,6 +63,7 @@ class BooksController < ApplicationController
   patch '/books/:id' do
     @book = Book.find_by(id: params[:id])
     @author = Author.find_by(name: @book.author.name)
+    
     if logged_in? && current_user.books.include?(@book)
       if !params[:title].blank? && !params[:author_name].blank?
         @book.update(title: params[:title], author_name: params[:author_name])

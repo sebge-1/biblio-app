@@ -44,6 +44,7 @@ class BooknotesController < ApplicationController
     @book = Book.find_by(id: @booknote.book_id)
     if logged_in? && current_user.booknotes.include?(@booknote)
       @booknote.update(summary: params[:summary], quotes: params[:quotes], research: params[:research])
+      
       if @booknote.valid?
         @book.booknotes << @booknote
         redirect "/booknotes/#{@booknote.id}"

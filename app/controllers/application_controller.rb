@@ -7,15 +7,13 @@ class ApplicationController < Sinatra::Base
     set :public_folder, 'public'
     set :views, 'app/views'
     enable :sessions # required to store session[:id]
-    # use Rack::Flash
     register Sinatra::Flash
     set :session_secret, "secret"
   end
 
   get '/' do
-    if logged_in?
-      @user = current_user
-      redirect "/users/#{@user.id}"
+    if current_user
+      redirect "/users/#{current_user.id}"
     else
       erb :index
     end

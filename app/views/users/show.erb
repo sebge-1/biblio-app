@@ -18,20 +18,22 @@
               </div>
               <!-- footer -->
               <div class="card-footer">
-                <div class="text-center">
-                  <a href="/books/<%= book.id %>/edit" class="btn btn-sm btn-dark">Edit this title</a>
-                </div>
+                <div class="row">
+                  <div class="col-md-6 text-left">
+                    <a href="/books/<%= book.id %>/edit" class="btn btn-sm btn-dark">Edit this title</a>
+                  </div>
 
                 <% @booknote = @user.booknotes.detect{|booknote| booknote.book_id === book.id} %>
                 <% if @booknote %>
-                  <div class="text-center">
+                  <div class="col-md-6 text-right">
                     <a href="/booknotes/<%= @booknote.id %>" class="btn btn-sm btn-dark">View your booknote</a>
                   </div>
                   <% else %>
-                    <div class="text-center">
+                    <div class="col-md-6 text-right">
                       <a href="/books/<%= book.id %>/booknotes/new" class="btn btn-sm btn-dark">Add a booknote</a>
                     </div>
                   <% end %>
+                </div>
 
                   <!-- delete button -->
                   <div>
