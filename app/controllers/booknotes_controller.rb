@@ -11,13 +11,17 @@ class BooknotesController < ApplicationController
 
   post '/books/:id/booknotes' do
     @book = Book.find_by_id(params[:id])
-    @booknote = Booknote.create(summary: params[:summary], quotes: params[:quotes], book_id: @book.id)
-    if @booknote.valid?
-      @book.booknotes << @booknote
-      redirect "/booknotes/#{@booknote.id}"
+    if logged_in? && current_user.books.include?(@book)
+      @booknote = Booknote.create(summary: params[:summary], quotes: params[:quotes], book_id: @book.id)
+      if @booknote.valid?
+        @book.booknotes << @booknote
+        redirect "/booknotes/#{@booknote.id}"
+      else
+        flash[:error] = @booknote.errors[:base][0]
+        redirect "/books/#{@book.id}/booknotes/new"
+      end
     else
-      flash[:error] = @booknote.errors[:base][0]
-      redirect "/books/#{@book.id}/booknotes/new"
+      redirect '/'
     end
   end
 
@@ -36,10 +40,17 @@ class BooknotesController < ApplicationController
   end
 
   patch '/booknotes/:id' do
+    @booknote = Booknote.find_by(id: params[:id])
+    @book = Book.find_by(id: @booknote.book_id)
     if logged_in? && current_user.booknotes.include?(@booknote)
-      @booknote = Booknote.find_by(id: params[:id])
       @booknote.update(summary: params[:summary], quotes: params[:quotes], research: params[:research])
-      redirect "/booknotes/#{@booknote.id}"
+      if @booknote.valid?
+        @book.booknotes << @booknote
+        redirect "/booknotes/#{@booknote.id}"
+      else
+        flash[:error] = @booknote.errors[:base][0]
+        redirect "/booknotes/#{@book.id}/edit"
+      end
     else
       redirect '/'
     end
