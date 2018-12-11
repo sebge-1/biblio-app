@@ -10,6 +10,8 @@ gem 'bcrypt'
 gem "password_strength"
 gem 'rack-flash3'
 gem 'sinatra-flash'
+gem 'foreman'
+gem 'rake'
 
 group :production do
   gem 'pg'
