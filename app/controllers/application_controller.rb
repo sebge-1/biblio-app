@@ -25,7 +25,7 @@ class ApplicationController < Sinatra::Base
     end
 
     def current_user
-      User.find_by(id: session[:id])
+      @user ||= User.find_by(id: session[:id])
     end
 
     def set_error_message

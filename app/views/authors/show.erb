@@ -10,7 +10,7 @@
       <li class="list-group-item"><%= book.title %>
         <% if current_user.books.include?(book) %>
           <div class="text-center">
-            <button class="btn btn-dark btn-sm "><a href="/books/<%= book.id %>/edit" class="text-light">Edit this title</a></button>
+            <button class="btn btn-dark btn-sm"><a href="/books/<%= book.id %>/edit" class="text-light">Edit this title</a></button>
           </div>
         <% else %>
           <div class="text-center">

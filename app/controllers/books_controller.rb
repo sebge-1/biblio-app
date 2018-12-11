@@ -22,7 +22,7 @@ class BooksController < ApplicationController
     if logged_in?
       if !params[:title].empty? && !params[:author_name].empty? #don't allow empty zombie books
         @author = Author.find_or_create_by(name: params[:author_name])
-        @book = Book.create(title: params[:title], author_name: @author.name)
+        @book = Book.create(title: params[:title], author_name: @author.name, summary: params[:summary])
         @user.books << @book
         @author.books << @book
         redirect "/books/#{@book.id}"
@@ -63,7 +63,7 @@ class BooksController < ApplicationController
   patch '/books/:id' do
     @book = Book.find_by(id: params[:id])
     @author = Author.find_by(name: @book.author.name)
-    
+
     if logged_in? && current_user.books.include?(@book)
       if !params[:title].blank? && !params[:author_name].blank?
         @book.update(title: params[:title], author_name: params[:author_name])
