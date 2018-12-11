@@ -14,7 +14,7 @@ gem 'foreman'
 gem 'rake'
 
 group :production do
-  gem 'pg'
+  gem 'pg', '~> 0.18'
 end
 
 group :development do
