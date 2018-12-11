@@ -12,14 +12,11 @@ gem 'rack-flash3'
 gem 'sinatra-flash'
 gem 'foreman'
 gem 'rake'
-
-group :production do
-  gem 'pg', '~> 0.18'
-end
+gem 'pg'
 
 group :development do
   gem 'shotgun'
   gem 'pry'
   gem 'tux'
-  # gem 'sqlite3'
+  gem 'sqlite3'
 end
