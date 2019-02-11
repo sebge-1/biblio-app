@@ -2,17 +2,15 @@
 
 <main role="main">
 
-  <div class="jumbotron">
-    <div class="container">
-      <h1 class="display-3">Welcome to Biblio!</h1>
-        <p>Biblio is your personal bookshelf. Keep track of your favourite tomes and add some notes on the important stuff.</p>
-    </div>
+  <div class="container-fluid text-center" id="lead">
+      <h1 class="display-3"><i>biblio.</i></h1>
+      <p id="copy">Your personal bookshelf. Organize your favourite tomes and add some notes.</p>
   </div>
 
 
-  <div class="container">
+  <div class="container text-center">
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-6 mt-5">
         <h2>Log In</h2>
 
           <form action="/login" method="post">
@@ -24,9 +22,9 @@
               <input type="submit" value="Log In" id="submit" class="btn btn-dark">
           </form>
         </div>
-      <div class="col-md-6">
+      <div class="col-md-6 mt-5">
         <h2>Don't have an account?</h2>
-          <h4>Signup <a href="/signup">here</a></h4>
+          <h4>Sign up <a href="/signup">here</a></h4>
       </div>
     </div>
   </div>
