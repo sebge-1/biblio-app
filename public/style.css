@@ -23,10 +23,10 @@ nav.navbar > span.navbar-toggler-icon {
 }
 
 footer {
-  position:absolute;
-  bottom:0;
-  width:100%;
-  height:50px;
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  height: 60px
   color: white;
   font-size: 18px;
 }
@@ -40,19 +40,19 @@ i {
 #lead {
   background-color: black;
   color: white;
-  padding: 30px;
+  padding: 50px;
   margin: 0 auto;
 }
 
 #copy {
   margin-top: 30px;
   font-family: 'Radley', serif !important;
-  font-size: 4vw;
+  font-size: 25px;
 }
 
 h1.display-3 {
   font-family: 'Radley', serif !important;
-  font-size: 13vw;
+  font-size: 85px;
   margin: 0 auto;
 }
 
