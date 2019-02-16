@@ -1,50 +1,54 @@
-<div class="text-center"><h2>Hello there, <%= @user.username %>!</h2></div>
+<div class="text-center">
+  <h2 class="mt-5">Hello there, <%= @user.username %>!</h2>
+</div>
 
  <% if @user.books.empty? %>
    <div class="text-center"><h4> Start by adding <a href="/books/new">your first book</a> to the shelf</h4></div>
  <% else %>
-    <h4 class="text-center">Your bookshelf:</h4>
-      <div class="row">
-        <% @user.books.each do |book| %>
-          <div class="col-sm-6">
-            <div class="card">
-              <!-- header -->
-              <div class="card-header text-center">
-                <h4 class="class-title"><%= book.title %></h4>
-              </div>
-              <!-- body -->
-              <div class="card-body text-center">
-                <em>By</em><br> <%= book.author_name %>
-              </div>
-              <!-- footer -->
-              <div class="card-footer">
-                <div class="row">
-                  <div class="col-md-6 text-left">
-                    <a href="/books/<%= book.id %>/edit" class="btn btn-sm btn-dark">Edit this title</a>
-                  </div>
-
-                <% @booknote = @user.booknotes.detect{|booknote| booknote.book_id === book.id} %>
-                <% if @booknote %>
-                  <div class="col-md-6 text-right">
-                    <a href="/booknotes/<%= @booknote.id %>" class="btn btn-sm btn-dark">View your booknote</a>
-                  </div>
-                  <% else %>
-                    <div class="col-md-6 text-right">
-                      <a href="/books/<%= book.id %>/booknotes/new" class="btn btn-sm btn-dark">Add a booknote</a>
-                    </div>
-                  <% end %>
+    <h4 class="text-center mb-5">Your bookshelf:</h4>
+      <div class="container mb-5">
+        <div class="row">
+          <% @user.books.each do |book| %>
+            <div class="col-sm-6">
+              <div class="card m-3">
+                <!-- header -->
+                <div class="card-header text-center">
+                  <h4 class="class-title"><%= book.title %></h4>
                 </div>
-
-                  <!-- delete button -->
-                  <div>
-                    <form method="post" action="/books/<%=book.id%>/delete">
-                      <input id="hidden" type="hidden" name="_method" value="delete">
-                      <input type="image" src="https://png.icons8.com/metro/50/000000/trash.png" height="10" width="10">
-                    </form>
+                <!-- body -->
+                <div class="card-body text-center">
+                  <em>By</em><br><a href="/authors/<%= book.author_id %>"><%= book.author_name %></a>
+                </div>
+                <!-- footer -->
+                <div class="card-footer">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <a href="/books/<%= book.id %>/edit"><img src="https://img.icons8.com/metro/26/000000/edit.png" height="15" width="15"></a>
+                    </div>
+                  <% @booknote = @user.booknotes.detect{|booknote| booknote.book_id === book.id} %>
+                  <% if @booknote %>
+                      <div class="col-md-6 text-right">
+                        <a href="/booknotes/<%= @booknote.id %>"><img src="https://img.icons8.com/ios-glyphs/50/000000/visible.png" height="25" width="25"></a>
+                      </div>
+                    <% else %>
+                        <div class="col-md-6 text-right">
+                          <a href="/books/<%= book.id %>/booknotes/new"><img src="https://img.icons8.com/metro/26/000000/plus.png"></a>
+                        </div>
+                    <% end %>
+                      <!-- delete button -->
+                      <div class="col-md-6">
+                        <form method="post" action="/books/<%=book.id%>/delete">
+                          <input id="hidden" type="hidden" name="_method" value="delete">
+                          <input type="image" src="https://png.icons8.com/metro/50/000000/trash.png" height="15" width="15">
+                        </form>
+                      </div>
+                    <!-- end of delete button --->
                   </div>
+                </div>
+                <!-- end of footer -->
               </div>
             </div>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       </div>
     <% end %>
