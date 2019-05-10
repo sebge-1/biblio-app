@@ -1,7 +1,8 @@
 class AuthorsController < ApplicationController
 
   get '/authors' do
-    @authors = Author.all
+    @user = current_user
+    @authors = @user.books.map{ |book| book.author}.uniq
     erb :'/authors/index'
   end
 
