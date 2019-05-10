@@ -9,8 +9,16 @@ class UsersController < ApplicationController
     if @user.save
       session[:id] = @user.id
       redirect "/users/#{@user.id}"
-    else
-      erb :'/users/signup'
+    elsif @user.errors.include?(:username)      
+      message = @user.errors.full_messages_for(:username)[0]
+      message.slice! "Username"
+      flash[:user_error] = message
+      redirect '/signup'
+    elsif @user.errors.include?(:password)
+      message = @user.errors.full_messages_for(:password)[0]
+      message.slice! "Password"
+      flash[:password_error] = message
+      redirect '/signup'
     end
   end
 
@@ -27,8 +35,8 @@ class UsersController < ApplicationController
       session[:id] = @user.id
       redirect "/users/#{@user.id}"
     else
-      set_error_message
-      erb :index
+      flash[:error] = set_error_message
+      redirect '/'
     end
   end
 
