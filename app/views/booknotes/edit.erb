@@ -1,10 +1,24 @@
 <form method="POST" action="/booknotes/<%= @booknote.id %>">
    <input id="hidden" type="hidden" name="_method" value="patch">
-  <h4>Edit your booknote here:
-    <h4>Summary: <input type="text" name="summary" id="summary" value="<%= @booknote.summary %>"</h4>
-    <h4>Quotes: <input type="text" name="quotes" id="quotes" value="<%= @booknote.quotes %>"</h4>
-    <h4>Follow-up for future research: <input type="text" name="research" id="research" value="<%= @booknote.research %>"</h4>
-
-  </h4>
-  <input type="submit" id="submit">
+   <div class="text-center mt-5">
+   <h1> Notes on <%= @booknote.book.title %></h1>
+ </div>
+ 
+ <div id="edit-form" class="card mt-5 text-center" style="margin: 0 auto; ">
+   <div class="card-header">
+     <h4>Summary:</h4>
+       <h5> <input type="text" name="summary" id="summary" value="<%= @booknote.summary || "Nothing here yet." %>"</h5>
+   </div>
+     <div class="card-body">
+       <h4>Quotes:</h4>
+         <h5><input type="text" name="quotes" id="quotes" value="<%= @booknote.quotes || "Nothing here yet." %>"</h5>
+     <br>
+     <hr>
+     <h4>Research:</h4>
+      <h5><input type="text" name="research" id="research" value="<%= @booknote.research || "Nothing here yet." %>"</h5>
+    </div>
+    <div class="card-footer">
+      <input class="btn btn-dark" type="submit" id="submit">
+    </div>
+  </div>
 </form>
