@@ -1,12 +1,33 @@
-<h4>Summary: <%= @booknote.summary %></h4>
-<h4>Quotes: <%= @booknote.quotes %></h4>
-<h4>Research: <%= @booknote.research %></h4>
+<div class="text-right mt-3 mr-5">
+  <a href="../users/<%= @user.id %>"><i class="fas fa-level-up-alt" style="font-size: 18x;"></i></a>
+</div>
 
-<div class="btn-group">
-  <a class="btn btn-dark" href="/booknotes/<%= @booknote.id %>/edit">Edit</a>
+<div class="text-center mt-5">
+  <h1> Notes on <%= @booknote.book.title %></h1>
+</div>
 
-  <form method="post" action="/booknotes/<%=@booknote.id%>/delete">
-    <input id="hidden" type="hidden" name="_method" value="delete">
-    <input type="submit" value="Delete" class="btn btn-dark">
-  </form>
+<div class="card mt-5 text-center" style="max-width: 60%; margin: 0 auto; ">
+  <div class="card-header">
+    <h4>Summary:</h4>
+      <h5><%= @booknote.summary || "Nothing here yet." %></h5>
+  </div>
+    <div class="card-body">
+      <h4>Quotes:</h4>
+        <h5><%= @booknote.quotes || "Nothing here yet." %></h5>
+    <br>
+    <hr>
+    <h4>Research:</h4>
+      <h5><%= @booknote.research || "Nothing here yet." %></h5>
+      </div>
+      <div class="card-footer text-right">
+        <div class="mb-2">
+          <a href="/booknotes/<%= @booknote.id %>/edit"><img src="https://img.icons8.com/small/26/000000/edit.png" height="20" width="20"></a>
+        </div>
+        <div class="mt-2">
+          <form method="post" action="/booknotes/<%=@booknote.id%>/delete">
+            <input id="hidden" type="hidden" name="_method" value="delete">
+            <input type="image" src="https://img.icons8.com/small/24/000000/filled-trash.png" height="20" width="20">
+          </form>
+        </div>
+    </div>
 </div>
