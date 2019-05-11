@@ -16,11 +16,11 @@
           <div class="card-footer">
             <% if current_user.books.include?(book) %>
               <div class="text-center">
-                <a href="/books/<%= book.id %>/edit" class="btn btn-sm btn-dark">Edit this title</a>
+                <a href="/books/<%= book.id %>/edit"><img src="https://img.icons8.com/metro/26/000000/edit.png" height="25" width="25"></a>
               </div>
             <% else %>
               <div class="text-center">
-                <a href="/books/<%= book.id %>/add" class="btn btn-sm btn-dark">Add to my bookshelf</a>
+                <a href="/books/<%= book.id %>/add"><img src="https://img.icons8.com/metro/26/000000/plus.png"></a>
               </div>
             <% end %>
           </div>
