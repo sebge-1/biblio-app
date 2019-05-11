@@ -26,6 +26,7 @@ class BooknotesController < ApplicationController
   end
 
   get '/booknotes/:id' do
+    @user = current_user
     @booknote = Booknote.find_by(id: params[:id])
     erb :'/booknotes/show'
   end
