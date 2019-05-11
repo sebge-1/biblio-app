@@ -7,10 +7,6 @@ nav.navbar > a {
   color: white;
 }
 
-nav.navbar > a:hover {
-
-}
-
 button.navbar-toggler {
   color: white;
 }
@@ -23,10 +19,11 @@ nav.navbar > span.navbar-toggler-icon {
 }
 
 footer {
+  margin-top: 15px;
   position: fixed;
   bottom: 0px;
   width: 100%;
-  height: 60px
+  height: 40px;
   color: white;
   font-size: 18px;
 }
@@ -69,8 +66,44 @@ h1.display-3 {
 #signup-wrapper {
   background-color: rgba(255,255,255,0.6);
   position: relative;
-  top: 33%;
+  top: 13%;
   border-radius: 5px;
   margin: 0 auto;
   width: 50%;
+}
+ul.book-controls {
+  list-style: none;
+  vertical-align: middle;
+ }
+ul.book-controls > li {
+  display: inline-block;
+  vertical-align: middle
+}
+ul.author-list {
+  list-style: none;
+}
+ul {
+  list-style: none;
+}
+
+@media only screen and (max-width: 925px) {
+  #signup-wrapper {
+    width: 66%;
+  }
+}
+
+@media only screen and (max-width: 720px) {
+  #signup-wrapper {
+    width: 90%;
+  }
+}
+
+#edit-form {
+  width: 66%;
+}
+
+@media only screen and (max-width: 620px) {
+  #edit-form {
+    width: 90%;
+  }
 }
