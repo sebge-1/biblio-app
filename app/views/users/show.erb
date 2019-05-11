@@ -3,9 +3,8 @@
 </div>
 
  <% if @user.books.empty? %>
-   <div class="text-center"><h4> Start by adding <a href="/books/new">your first book</a> to the shelf</h4></div>
+   <div class="text-center mt-5"><h4> Start by adding <a href="/books/new">your first book</a> to the shelf</h4></div>
  <% else %>
-    <h4 class="text-center mb-5">Your bookshelf:</h4>
       <div class="container mb-5">
         <div class="row">
           <% @user.books.each do |book| %>
