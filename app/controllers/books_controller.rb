@@ -2,7 +2,7 @@ class BooksController < ApplicationController
 
   get '/books' do
     if logged_in?
-      @books = Book.all
+      @books = current_user.books
       erb :'/books/index'
     else
       redirect '/'
@@ -20,12 +20,19 @@ class BooksController < ApplicationController
   post '/books' do
     @user = current_user
     if logged_in?
-      if !params[:title].empty? && !params[:author_name].empty? #don't allow empty zombie books
-        @author = Author.find_or_create_by(name: params[:author_name])
-        @book = Book.create(title: params[:title], author_name: @author.name, summary: params[:summary])
-        @user.books << @book
-        @author.books << @book
-        redirect "/books/#{@book.id}"
+      if !params[:title].empty? && !params[:author_name].empty?
+          @book = Book.find_or_create_by(title: params[:title], author_name: params[:author_name])
+          @author = Author.find_or_create_by(name: params[:author_name])
+          if !@user.books.include?(@book)
+            @book.author = @author
+            @user.books << @book
+            @book.save
+            
+            redirect "/books/#{@book.id}"
+          else
+            flash[:message] = "You have already have this book in your collection."
+            redirect "/books/#{@book.id}"
+          end
       else
         if params[:title].blank? && params[:author_name].blank?
           flash[:error] = 'Title and author cannot be blank'
@@ -84,6 +91,7 @@ class BooksController < ApplicationController
   end
 
   delete '/books/:id/delete' do
+
     @book = Book.find_by(id: params[:id])
     if logged_in? && current_user.books.include?(@book)
       @book.destroy
@@ -93,8 +101,8 @@ class BooksController < ApplicationController
 
   get '/books/:id/add' do
     @book = Book.find_by(id: params[:id])
-    @copy = Book.new(title: @book.title, author_name: @book.author_name)
-    current_user.books << @copy
+    # @copy = Book.new(title: @book.title, author_name: @book.author_name)
+    current_user.books << @book
     redirect '/'
   end
 
