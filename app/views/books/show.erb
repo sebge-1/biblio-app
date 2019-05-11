@@ -1,17 +1,21 @@
 <main role="main" class="inner cover text-center">
-        <h1 class="cover-heading"><%= @book.title %> </h1>
-        <p class="lead"><em>By</em><br><%= @book.author_name %></p>
-        <p>Summary: <%= @book.summary %> </p>
-        <p class="lead">
-          <a href="/books/<%= @book.id %>/edit" class="btn btn-lg btn-secondary">Edit this title</a>
-          <a href="/books/<%= @book.id %>/booknotes/new" class="btn btn-lg btn-secondary">Add a booknote</a>
-        </p>
-      </main>
-
-  <!-- delete button -->
-  <div>
-    <form method="post" action="/books/<%= @book.id%>/delete">
-      <input id="hidden" type="hidden" name="_method" value="delete">
-      <input type="image" src="https://png.icons8.com/metro/50/000000/trash.png" height="15" width="15">
-    </form>
+  <h1 class="cover-heading mt-5"><%= @book.title %> </h1>
+  <p class="lead"><em>By</em><br><%= @book.author_name %></p>
+  
+    <div class="mt-5" style="display: flex; justify-content: center">
+      <div class="mr-5">
+        <a href="/books/<%= @book.id %>/edit"><img src="https://img.icons8.com/metro/26/000000/edit.png" height="20" width="20"></a>
+      </div>
+      <div class="mr-5">
+        <a href="/books/<%= @book.id %>/booknotes/new"><img src="https://img.icons8.com/metro/26/000000/plus.png"></a>
+      </div>
+      
+      <div class="mr=5">
+        <form method="post" action="/books/<%= @book.id%>/delete">
+          <input id="hidden" type="hidden" name="_method" value="delete">
+          <input type="image" src="https://png.icons8.com/metro/50/000000/trash.png" height="25" width="25">
+        </form>
+      </div>
+    </div>
   </div>
+</main>
