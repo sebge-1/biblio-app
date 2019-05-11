@@ -1,13 +1,15 @@
-<form method="POST" action="/books/<%= @book.id %>/booknotes">
+<form class="text-center mt-3" method="POST" action="/books/<%= @book.id %>/booknotes">
   <h4>Summary:
   </h4>
-    <textarea name="summary" id="summary">
-   </textarea>
-  <h4>Quotes:
-    <input type="text" name="quotes" id="quotes">
-  </h4>
-  <h4>Follow-up for future research:
-    <input type="text" name="research" id="research">
-  </h4>
-  <h4><input type="submit" id="submit" class="btn btn-dark"></h4>
+  <br>
+  <textarea name="summary" id="summary">
+  </textarea>
+  <h4 class="mt-3">Quotes:</h4>
+  <br>
+  <textarea type="text" name="quotes" id="quotes"> </textarea>
+  <h4 class="mt-3">Follow-up for future research:</h4>
+  <br>
+  <textarea type="text" name="research" id="research"> </textarea>
+  <br>
+  <input type="submit" id="submit" class="btn btn-dark mt-2">
 </form>
