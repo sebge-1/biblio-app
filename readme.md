@@ -29,7 +29,7 @@ Make changes to the pull request if the reviewing maintainer recommends them.
 Celebrate your success after your pull request is merged!
 
 # Where can I go for help?
-If you need help, you can direct question to sebgertz@gmail.com
+If you need help, you can raise an issue on this repo.
 
 # Licence
 
